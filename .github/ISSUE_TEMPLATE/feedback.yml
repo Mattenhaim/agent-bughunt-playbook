@@ -1,0 +1,39 @@
+name: Feedback
+description: Report a problem or suggest an improvement for the playbook, prompts, templates, or case studies
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the feedback! This form is about **this repository's content** only.
+
+        - Found a bug in **n8n**? Please report it at https://github.com/n8n-io/n8n/issues — this repo documents a process, it does not track n8n bugs.
+        - Questions about running your own hunt? Start at the [5-minute quickstart](https://github.com/Mattenhaim/agent-bughunt-playbook#5-minute-quickstart-run-a-round-on-a-new-repo).
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part?
+      options:
+        - README (EN/中文)
+        - playbook/
+        - case-studies/
+        - prompts/
+        - templates/
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong?
+      description: Quote the exact section/line and explain what is inaccurate, unclear, or missing. If a status claim is stale, include what GitHub shows today.
+      placeholder: 'e.g. playbook/04 says X, but in my run the agent needed Y because ...'
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: Concrete replacement text or a description of the fix. PRs welcome (see CONTRIBUTING.md).
+    validations:
+      required: false

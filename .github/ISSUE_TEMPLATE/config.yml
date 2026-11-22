@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: n8n bug reports
+    url: https://github.com/n8n-io/n8n/issues
+    about: Bugs in n8n itself (including the ones this repo's PRs fix) belong in the n8n repository, not here.
+  - name: n8n community forum
+    url: https://community.n8n.io
+    about: General n8n usage questions.
