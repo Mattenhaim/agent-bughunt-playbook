@@ -42,6 +42,8 @@ flowchart LR
 
 Bug 1–5 来自对 `source-control.ee` 模块的只读审计；6–8 来自第二轮（variables、webhooks、CORS）。合计：3 个数据丢失/数据有效性 bug（#44748、#44749、#44771）、2 个安全相关的 CORS bug（#44772、#44773——后者为被误判已修复的 #18528 带复现重新提交）、2 个健壮性修复（损坏文件不再击穿整批处理；#43952、#44750）、1 个 API 一致性修复（#44751）。每个修复都附带在上游 master 上会失败的测试。
 
+**状态核实于 2026-11-22：** 8 个 PR 全部 open（无一合并；合并被阻止，等待维护者审阅），7 个 issue 全部 open——n8n 团队已完成分诊：第一轮 issue 已带 `status:in-linear` / `status:team-assigned` 标签。所有 PR 均带 `cla-signed` 标签。
+
 ## 仓库结构
 
 | 路径 | 内容 |

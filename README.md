@@ -42,6 +42,8 @@ All links go to the real PRs and issues. Status is live-checked against GitHub, 
 
 Bugs 1–5 came from a read-only audit of the `source-control.ee` module; bugs 6–8 from a second session covering variables, webhooks, and CORS. Together: 3 data-loss/validity bugs (#44748, #44749, #44771), 2 security-adjacent CORS bugs (#44772, #44773 — the latter reviving stale-closed #18528 with a reproduction), 2 robustness fixes for malformed-file handling (#43952, #44750), and 1 API consistency fix (#44751). Every fix ships tests that fail on upstream master.
 
+**Status verified on 2026-11-22:** all 8 PRs are open (none merged; merge blocked pending maintainer review), all 7 issues are open, and the n8n team has triaged them — the round-1 issues already carry `status:in-linear` / `status:team-assigned` labels. Every PR carries the `cla-signed` label.
+
 ## What's in this repo
 
 | Path | What it is |
