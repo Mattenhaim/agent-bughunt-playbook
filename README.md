@@ -1,6 +1,6 @@
 # Agent Bug-Hunt Playbook
 
-A field-tested playbook for running AI coding agents against large open-source codebases — finding real bugs, proving them with failing tests, shipping minimal fixes, and surviving the PR gauntlet (CLA, CI, AI reviewers). The worked example: **8 open pull requests and 6 filed issues against [n8n-io/n8n](https://github.com/n8n-io/n8n)**, produced in two hunt sessions.
+A field-tested playbook for running AI coding agents against large open-source codebases — finding real bugs, proving them with failing tests, shipping minimal fixes, and surviving the PR gauntlet (CLA, CI, AI reviewers). The worked example: **8 open pull requests and 7 filed issues against [n8n-io/n8n](https://github.com/n8n-io/n8n)**, produced in two hunt sessions.
 
 > **Honesty note:** every PR listed here is **open and awaiting review** as of November 2026 — none are merged. This repo documents the *process*, not guaranteed outcomes.
 
@@ -40,7 +40,7 @@ All links go to the real PRs and issues. Status is live-checked against GitHub, 
 | 7 | Allowed Origins (CORS) is ignored for webhooks with dynamic paths | [#44772](https://github.com/n8n-io/n8n/pull/44772) | [#44775](https://github.com/n8n-io/n8n/issues/44775) | Open |
 | 8 | CORS entries after the first break when the list contains spaces (closed issue #18528 was never actually fixed) | [#44773](https://github.com/n8n-io/n8n/pull/44773) | [#44776](https://github.com/n8n-io/n8n/issues/44776) | Open |
 
-Bugs 1–5 came from a read-only audit of the `source-control.ee` module; bugs 6–8 from a second session covering variables, webhooks, and CORS. Together: 6 confirmed logic bugs with maintainer-merged-able test coverage, 2 consistency/spec bugs (#44751, #44750), and 1 stale-closed security-adjacent issue resurrected with a reproduction.
+Bugs 1–5 came from a read-only audit of the `source-control.ee` module; bugs 6–8 from a second session covering variables, webhooks, and CORS. Together: 3 data-loss/validity bugs (#44748, #44749, #44771), 2 security-adjacent CORS bugs (#44772, #44773 — the latter reviving stale-closed #18528 with a reproduction), 2 robustness fixes for malformed-file handling (#43952, #44750), and 1 API consistency fix (#44751). Every fix ships tests that fail on upstream master.
 
 ## What's in this repo
 
@@ -49,7 +49,7 @@ Bugs 1–5 came from a read-only audit of the `source-control.ee` module; bugs 6
 | [`playbook/`](playbook/) | The method, step by step — targeting, auditing, reproduction, failing tests, minimal fixes, PR writing, identity/CLA/CI pitfalls, AI-reviewer handling, human-approval gates |
 | [`case-studies/n8n/`](case-studies/n8n/) | One page per real bug: problem, root cause, reproduction, fix approach, links |
 | [`prompts/`](prompts/) | Copy-paste agent prompts: hunt session, failing-test-first, dedup search, issue drafting |
-| [`templates/`](templates/) | PR body and bug-issue skeletons that survived real maintainer-facing use |
+| [`templates/`](templates/) | PR body and bug-issue skeletons used for the real PRs and issues linked above |
 | [`README.zh-CN.md`](README.zh-CN.md) | 中文版说明 |
 
 ## Quickstart (your own hunt)

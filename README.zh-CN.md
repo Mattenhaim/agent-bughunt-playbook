@@ -1,6 +1,6 @@
 # Agent Bug-Hunt Playbook（中文版）
 
-一份经过实战检验的作战手册：如何用 AI 编码智能体在大型开源代码库里找真实 bug——复现、用失败测试证实、提交最小修复，并扛过 PR 关卡（CLA、CI、AI 审查者）。实战案例：**两个查找周期内向 [n8n-io/n8n](https://github.com/n8n-io/n8n) 提交了 8 个 open PR 和 6 个 issue**。
+一份经过实战检验的作战手册：如何用 AI 编码智能体在大型开源代码库里找真实 bug——复现、用失败测试证实、提交最小修复，并扛过 PR 关卡（CLA、CI、AI 审查者）。实战案例：**两个查找周期内向 [n8n-io/n8n](https://github.com/n8n-io/n8n) 提交了 8 个 open PR 和 7 个 issue**。
 
 > **如实说明**：截至 2026 年 11 月，下列 PR 全部为 **open、等待维护者审阅** 状态——没有一个已合并。本仓库记录的是*过程与方法*，不是保证结果的神话。
 
@@ -40,7 +40,7 @@ flowchart LR
 | 7 | 动态路径 webhook 的 Allowed Origins (CORS) 被忽略 | [#44772](https://github.com/n8n-io/n8n/pull/44772) | [#44775](https://github.com/n8n-io/n8n/issues/44775) | Open |
 | 8 | 列表带空格时第一个之后的 CORS 来源全部失效（已关闭的 #18528 从未真正修好） | [#44773](https://github.com/n8n-io/n8n/pull/44773) | [#44776](https://github.com/n8n-io/n8n/issues/44776) | Open |
 
-Bug 1–5 来自对 `source-control.ee` 模块的只读审计；6–8 来自第二轮（variables、webhooks、CORS）。合计：6 个带可维护者测试覆盖的确证逻辑 bug、2 个一致性/规格 bug（#44751、#44750），以及一个被误判已修复的安全相关问题（#18528）带复现重新提交。
+Bug 1–5 来自对 `source-control.ee` 模块的只读审计；6–8 来自第二轮（variables、webhooks、CORS）。合计：3 个数据丢失/数据有效性 bug（#44748、#44749、#44771）、2 个安全相关的 CORS bug（#44772、#44773——后者为被误判已修复的 #18528 带复现重新提交）、2 个健壮性修复（损坏文件不再击穿整批处理；#43952、#44750）、1 个 API 一致性修复（#44751）。每个修复都附带在上游 master 上会失败的测试。
 
 ## 仓库结构
 
@@ -49,7 +49,7 @@ Bug 1–5 来自对 `source-control.ee` 模块的只读审计；6–8 来自第�
 | [`playbook/`](playbook/) | 方法论分步：选题、审计、复现、失败测试、最小修复、PR 撰写、身份/CLA/CI 坑、AI 审查处理、何时必须问人 |
 | [`case-studies/n8n/`](case-studies/n8n/) | 每个 bug 一页：问题、根因、复现、修复思路、链接 |
 | [`prompts/`](prompts/) | 可复用提示词： hunt 会话、失败测试优先、匿名查重、从修复稿写 issue |
-| [`templates/`](templates/) | 经实战验证的 PR 正文与 bug issue 骨架 |
+| [`templates/`](templates/) | 用于上述真实 PR 与 issue 的 PR 正文与 bug issue 骨架 |
 | [English](README.md) | 英文版 |
 
 ## 自己开一轮（Quickstart）

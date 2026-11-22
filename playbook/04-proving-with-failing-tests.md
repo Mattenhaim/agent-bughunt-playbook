@@ -4,7 +4,7 @@
 
 ## Match the project's test idiom
 
-Read the neighboring tests first and copy their shape: the same mock builders, the same env-var setup, the same assertion style. In n8n that meant reusing the existing `mock<VariablesRepository>()` scaffolding and the `vitest-mock-extended` conventions instead of inventing a new harness. A regression test that looks native gets merged; one that looks grafted gets re-litigated.
+Read the neighboring tests first and copy their shape: the same mock builders, the same env-var setup, the same assertion style. In n8n that meant reusing the existing `mock<VariablesRepository>()` scaffolding and the `vitest-mock-extended` conventions instead of inventing a new harness. A regression test that looks native is far easier for a maintainer to accept; one that looks grafted gets re-litigated.
 
 ## Test the bug, not the fix
 
