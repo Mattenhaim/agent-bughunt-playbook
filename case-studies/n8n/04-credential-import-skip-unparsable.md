@@ -4,7 +4,7 @@
 
 ## Problem
 
-After [#43952](04-source-control-skip-unparseable-files.md) fixed the *status-side* readers, status finally reported a pullable state — but the pull itself still failed at the credential import step (after workflows had already been imported), and the content-import policy preview threw a 500 on the same malformed file. The first fix made the failure surface later instead of fixing the whole class.
+After [#43952](01-source-control-skip-unparseable-files.md) fixed the *status-side* readers, status finally reported a pullable state — but the pull itself still failed at the credential import step (after workflows had already been imported), and the content-import policy preview threw a 500 on the same malformed file. The first fix made the failure surface later instead of fixing the whole class.
 
 ## Root cause
 
