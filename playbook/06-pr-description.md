@@ -1,5 +1,7 @@
 # Step 6 — Writing the PR (and its issue)
 
+> **In one line:** fill the project's own templates in order — imperative one-line summary, broken invariant, paste-buffer test commands, `Fixes #` for the bug you filed and `Related #` for prior art — and generate the issue text from your hunt report rather than retyping it.
+
 **Goal:** make the maintainer's first read land the whole story in under a minute.
 
 ## Use the project's template, exactly
@@ -27,3 +29,7 @@ Anonymous dedup search first (see [the prompt](../prompts/dedup-search.md)). The
 ## Titles follow the project's conventions
 
 n8n PR titles are `type(scope): Summary` with the summary capitalized, imperative, no period — the title becomes the changelog entry. Issue titles are plain sentences describing the observable misbehavior, not the implementation.
+
+---
+
+**Next:** [Step 7 — Identity, CLA, and CI traps](07-identity-cla-and-ci.md)

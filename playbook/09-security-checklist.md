@@ -1,5 +1,7 @@
 # Step 9 — Pre-flight security & honesty checklist
 
+> **In one line:** grep every artifact for token formats, personal emails, absolute paths and session ids (expect zero matches), publish only proven bugs with live-checked state, quote the target project sparingly, and never touch credential-holding directories at all.
+
 **Goal:** nothing in a commit, PR, issue, or public repo can leak secrets, private paths, or unproven claims.
 
 ## Grep before every public artifact
@@ -31,3 +33,7 @@ Expect **zero** matches. The n8n hunt repo self-check pattern: report the comman
 - Keep tools and materials in separate scratch directories; treat downloaded archives as untrusted.
 - Don't read or touch directories that might hold credentials (e.g. a folder literally named for tokens) — you don't need them, and accidental exposure is forever.
 - Scope every remote action: new branches only, no deletions, no force without an explicit scoped approval.
+
+---
+
+**Next:** the worked example — [Case studies: the n8n hunt](../case-studies/n8n/01-source-control-skip-unparseable-files.md)

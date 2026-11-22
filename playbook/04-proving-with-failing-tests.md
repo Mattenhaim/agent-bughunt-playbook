@@ -1,5 +1,7 @@
 # Step 4 — Proving the bug with a failing test
 
+> **In one line:** write tests in the project's own idiom that assert the broken contract (not internals), fail on upstream `master`, and come with a positive control plus adjacent edge cases — this is what separates a finding from an opinion.
+
 **Goal:** a test that fails on upstream `master`. This is what separates a finding from an opinion, and it is the single strongest signal a maintainer can get.
 
 ## Match the project's test idiom
@@ -31,3 +33,7 @@ The n8n sessions added, alongside each failing case:
 ## Keep the failing-test run reproducible
 
 Record the exact commands in the PR body (`cd packages/cli && pnpm vitest run <paths>`), including any env vars the project's test script needs. A maintainer should be one paste away from seeing the same red you saw.
+
+---
+
+**Next:** [Step 5 — The minimal fix](05-minimal-fix.md)

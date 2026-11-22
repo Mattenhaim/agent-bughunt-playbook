@@ -1,5 +1,7 @@
 # Step 3 — Reproducing the bug
 
+> **In one line:** reproduce at the cheapest level that proves the point (unit → service with mocks → integration), beware environment artifacts (CRLF checkouts, stale `dist/`) faking results, always run the same check on clean `master`, and keep the "fails before / passes after" evidence honest with the stash trick.
+
 **Goal:** turn "the code looks wrong" into "here is exactly what happens".
 
 ## Reproduce at the cheapest level that proves the point
@@ -21,3 +23,7 @@ For each fix later, you want: *test fails before the fix, passes after*. The che
 ## Timing
 
 If reproduction needs a race (two concurrent writes), don't chase it in the PR. The deterministic seam — the missing validation — is the bug; say so in the report and cover it at the seam level.
+
+---
+
+**Next:** [Step 4 — Proving the bug with a failing test](04-proving-with-failing-tests.md)

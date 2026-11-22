@@ -1,5 +1,7 @@
 # Step 5 — The minimal fix
 
+> **In one line:** one bug per branch, fix the seam instead of the symptom, reuse the project's own vocabulary and validators, and verify the sibling surface (full test dir, typecheck, formatter, plus a positive control that the fix doesn't over-block).
+
 **Goal:** the smallest change that makes the failing test pass without narrowing the contract or breaking siblings.
 
 ## One bug, one branch
@@ -30,3 +32,7 @@ Before declaring done:
 ## Commit message
 
 Match the project's convention (n8n: `fix(core): Imperative summary, no period`). The commit is the changelog entry — write it for the release notes reader.
+
+---
+
+**Next:** [Step 6 — Writing the PR (and its issue)](06-pr-description.md)

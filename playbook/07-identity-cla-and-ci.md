@@ -1,5 +1,7 @@
 # Step 7 — Identity, CLA, and CI traps
 
+> **In one line:** the mechanical layer bites hardest — placeholder commit authors fail EasyCLA, `core.autocrlf=true` fakes formatter failures, fork PRs don't run heavy CI until approved — and AI-reviewer comments are a triage list to verify and fix with tests, never a thread to chat in.
+
 **Goal:** don't lose a day to the mechanical layer. All three traps below were hit for real in the n8n case.
 
 ## Trap 1: commit authorship breaks the CLA check
@@ -34,3 +36,7 @@ Fork PRs in n8n don't run the heavy workflows until a maintainer approves them �
 ## The sequencing that avoids re-work
 
 1. correct repo-local identity → 2. tests + typecheck + formatter on committed content → 3. dedup search → 4. human approval → 5. push → 6. open issue + PR with links → 7. watch checks; treat AI-review comments as a triage list, not a chat.
+
+---
+
+**Next:** [Step 8 — When the agent must ask a human](08-when-to-ask-a-human.md)

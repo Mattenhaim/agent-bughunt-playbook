@@ -1,5 +1,7 @@
 # Step 2 — The read-only audit
 
+> **In one line:** run the agent with zero side effects and demand, per candidate, file:line + violated invariant + a reproduction sketch; read for violated invariants (check-then-act, dual precedence implementations, untrimmed user config, id-vs-name, stale snapshots), trace every claim across layers, and keep a findings ledger that later becomes the PR bodies.
+
 **Goal:** find candidate bugs by *reading*, with zero side effects. No edits, no pushes, no posts.
 
 ## Run the agent read-only
@@ -31,3 +33,7 @@ Every suspicion must be traced across the caller→implementation boundary befor
 ## Keep a findings ledger
 
 One entry per candidate: **suspected → traced → proven (failing test) → disproven**, with file/line and the next action. The ledger becomes the hunt report and, later, the PR bodies — no re-derivation at write-up time.
+
+---
+
+**Next:** [Step 3 — Reproducing the bug](03-reproducing-the-bug.md)

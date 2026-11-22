@@ -1,5 +1,7 @@
 # Step 8 — When the agent must ask a human
 
+> **In one line:** pushes, issue/PR creation, comments, closures and anything outward-facing wait for explicit scoped human approval ("only these three branches", "one-time: these three issues") — everything read-only is the agent's job, and blockers get recorded, not improvised around.
+
 **Goal:** outward-facing and hard-to-reverse actions are human decisions. Everything else is the agent's job.
 
 ## Always human-approved (non-negotiable)
@@ -33,3 +35,7 @@ Batching several scoped actions into a single human decision ("create these thre
 ## If blocked, report, don't improvise
 
 When a same-failure loop repeats twice, or a step needs an approval you don't have: stop that thread, record the blocker, and move to the next item. The n8n hunt hit this with a missing `gh` CLI (installed portable, no system changes) and a missing round-1 materials directory (re-derived from GitHub instead) — both were worked around *within* the approved scope, and both were reported.
+
+---
+
+**Next:** [Step 9 — Pre-flight security & honesty checklist](09-security-checklist.md)

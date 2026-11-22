@@ -1,5 +1,7 @@
 # Step 1 — Choosing a target
 
+> **In one line:** pick a single module with bug-rich traits (serialization seams, lifecycle handoffs, config parsing, fresh code), write the scope boundary down, and budget the session — vagueness is the #1 reason agent hunts produce nothing.
+
 **Goal:** one module, one hard boundary, one session. Vagueness is the #1 reason agent hunts produce nothing.
 
 ## Pick by bug-habitat, not by fame
@@ -27,3 +29,7 @@ A productive read-only audit session covers one module deeply (about 2–5k line
 ## Reuse the clone, don't fork the workflow
 
 If a previous session left a working clone with dependencies installed, re-use it: fetch upstream `master`, create a fresh branch, and keep prior branches untouched. Dependencies are expensive; branches are cheap.
+
+---
+
+**Next:** [Step 2 — The read-only audit](02-read-only-audit.md)

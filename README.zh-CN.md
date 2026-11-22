@@ -4,6 +4,11 @@
 
 > **如实说明**：截至 2026 年 11 月，下列 PR 全部为 **open、等待维护者审阅** 状态——没有一个已合并。本仓库记录的是*过程与方法*，不是保证结果的神话。
 
+## 目录
+
+- 本页：[为什么写这个](#为什么写这个) · [流程闭环](#流程闭环) · [实战成果](#实战成果n8n-案例) · [仓库结构](#仓库结构) · [5 分钟上手](#5-分钟上手在新仓库跑一轮) · [原则](#原则) · [许可](#许可)
+- 深入内容：[playbook/](playbook/)（方法论）· [case-studies/n8n/](case-studies/n8n/)（每 bug 一页）· [prompts/](prompts/)（可复用提示词）· [templates/](templates/)（PR/issue 骨架）· [English](README.md)
+
 ## 为什么写这个
 
 大多数“AI 找 bug”的演示止步于一份想象出来的漏洞报告。真正的难点在“灵光一现”之后：写出在维护者的 `master` 上能失败的测试、保持修复最小化、贴合项目规范、过 CLA 和 CI、回应自动审查者而不刷屏。本仓库给出完整闭环和真实产物。
@@ -54,12 +59,14 @@ Bug 1–5 来自对 `source-control.ee` 模块的只读审计；6–8 来自第�
 | [`templates/`](templates/) | 用于上述真实 PR 与 issue 的 PR 正文与 bug issue 骨架 |
 | [English](README.md) | 英文版 |
 
-## 自己开一轮（Quickstart）
+## 5 分钟上手（在新仓库跑一轮）
 
-1. 读 [`playbook/01-choosing-a-target.md`](playbook/01-choosing-a-target.md)，选定**一个**模块并划死边界。
-2. 让智能体以**只读模式**跑 [hunt 提示词](prompts/bug-hunt-session.md)。每个候选 bug 必须附带“能在 `master` 上失败的测试”方案。
-3. 每个确认 bug：失败测试 → 独立分支最小修复 → 测试+类型+静态检查 → 匿名查重 → PR + 关联 issue。
-4. PR 开出后按 [`playbook/07-identity-cla-and-ci.md`](playbook/07-identity-cla-and-ci.md) 处理——身份/CLA 这个坑曾让我们多走一轮推送循环。
+1. **瞄准（2 分钟）。** 打开 [prompts/bug-hunt-session.md](prompts/bug-hunt-session.md)，填入目标仓库、**一个**模块、硬边界和报告路径。让智能体以只读模式启动。
+2. **收集（智能体时间，你零投入）。** 让它审计并产出发现台账。每个“确证”结论都必须指名一个能在 upstream `master` 上失败的测试；未证实的标注“疑似”或放弃。
+3. **证实（你的 5 分钟）。** 对每个你在意的候选，在干净分支上跑 [prompts/failing-test-first.md](prompts/failing-test-first.md)。测试必须先失败、后修复——这是全部纪律所在。
+4. **修复。** 一个 bug 一个分支；最小改动；测试+类型+格式检查全绿（见 [playbook/05-minimal-fix.md](playbook/05-minimal-fix.md)）。
+5. **发布（2 分钟）。** 跑 [prompts/dedup-search.md](prompts/dedup-search.md)，再用 [prompts/issue-from-fix.md](prompts/issue-from-fix.md) 依据 [templates/](templates/) 起草 issue 与 PR 正文。你审阅草案、批准后推送、开 PR——未经你签字不发布任何内容（见 [playbook/08-when-to-ask-a-human.md](playbook/08-when-to-ask-a-human.md)）。
+6. **跟进。** 按 [playbook/07-identity-cla-and-ci.md](playbook/07-identity-cla-and-ci.md) 处理身份/CLA/CI/AI 审查——身份/CLA 这个坑曾让我们多走一轮推送循环。
 
 ## 原则
 

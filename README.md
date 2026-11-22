@@ -4,6 +4,11 @@ A field-tested playbook for running AI coding agents against large open-source c
 
 > **Honesty note:** every PR listed here is **open and awaiting review** as of November 2026 — none are merged. This repo documents the *process*, not guaranteed outcomes.
 
+## Contents
+
+- On this page: [Why this exists](#why-this-exists) · [The loop](#the-loop) · [Results](#results-n8n-case-study) · [What's in this repo](#whats-in-this-repo) · [5-minute quickstart](#5-minute-quickstart-run-a-round-on-a-new-repo) · [Principles](#principles) · [License](#license)
+- Deep dives: [playbook/](playbook/) (the method) · [case-studies/n8n/](case-studies/n8n/) (one page per bug) · [prompts/](prompts/) (copy-paste agent prompts) · [templates/](templates/) (PR/issue skeletons) · [中文版](README.zh-CN.md)
+
 ## Why this exists
 
 Most "AI finds bugs" demos stop at a hallucinated vulnerability report. The hard part is everything after the "eureka": writing a test that fails on the maintainer's `master`, keeping the fix minimal, matching the project's conventions, passing CLA and CI, and responding to automated reviewers without spamming the thread. This repo is the full loop, with real artifacts.
@@ -54,12 +59,14 @@ Bugs 1–5 came from a read-only audit of the `source-control.ee` module; bugs 6
 | [`templates/`](templates/) | PR body and bug-issue skeletons used for the real PRs and issues linked above |
 | [`README.zh-CN.md`](README.zh-CN.md) | 中文版说明 |
 
-## Quickstart (your own hunt)
+## 5-minute quickstart (run a round on a new repo)
 
-1. Read [`playbook/01-choosing-a-target.md`](playbook/01-choosing-a-target.md), pick **one** module and a hard scope boundary.
-2. Start the agent in **read-only mode** with the [hunt prompt](prompts/bug-hunt-session.md). Every candidate bug must come with a way to fail a test on `master`.
-3. For each confirmed bug: failing test → minimal fix on its own branch → tests + typecheck + lint → dedup search → PR + linked issue.
-4. When the PR goes up, follow [`playbook/07-identity-cla-and-ci.md`](playbook/07-identity-cla-and-ci.md) — the identity/CLA trap alone cost us a re-push cycle.
+1. **Aim (2 min).** Open [prompts/bug-hunt-session.md](prompts/bug-hunt-session.md), fill in the target repo, ONE module, hard scope boundaries, and a report path. Start your agent in read-only mode with it.
+2. **Collect (agent time, zero of yours).** Let it audit and produce the findings ledger. Every "confirmed" claim must name a test that fails on upstream `master`; anything unproven is labeled "suspected" or dropped.
+3. **Prove (5 min of yours).** For each candidate you care about, run [prompts/failing-test-first.md](prompts/failing-test-first.md) on a clean branch. Tests must fail before any fix exists — that is the whole discipline.
+4. **Fix.** One bug per branch; minimal change; tests + typecheck + formatter green (see [playbook/05-minimal-fix.md](playbook/05-minimal-fix.md)).
+5. **Publish (2 min).** Run [prompts/dedup-search.md](prompts/dedup-search.md), then [prompts/issue-from-fix.md](prompts/issue-from-fix.md) to draft the bug issue and PR body from [templates/](templates/). Review the drafts, approve, push, open the PR — nothing posts without your sign-off (see [playbook/08-when-to-ask-a-human.md](playbook/08-when-to-ask-a-human.md)).
+6. **Follow through.** Handle identity/CLA/CI/AI-reviewer notes per [playbook/07-identity-cla-and-ci.md](playbook/07-identity-cla-and-ci.md) — the identity/CLA trap alone cost us a re-push cycle.
 
 ## Principles
 
