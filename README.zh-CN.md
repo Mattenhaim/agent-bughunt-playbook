@@ -1,8 +1,8 @@
 # Agent Bug-Hunt Playbook（中文版）
 
-一份经过实战检验的作战手册：如何用 AI 编码智能体在大型开源代码库里找真实 bug——复现、用失败测试证实、提交最小修复，并扛过 PR 关卡（CLA、CI、AI 审查者）。实战案例：**两个查找周期内向 [n8n-io/n8n](https://github.com/n8n-io/n8n) 提交了 8 个 open PR 和 7 个 issue**。
+一份经过实战检验的作战手册：如何用 AI 编码智能体在大型开源代码库里找真实 bug——复现、用失败测试证实、提交最小修复，并扛过 PR 关卡（CLA、CI、AI 审查者）。实战案例：**两个查找周期内向 [n8n-io/n8n](https://github.com/n8n-io/n8n) 提交了 8 个 PR 和 7 个 issue——其中 5 个已被 n8n 维护者合并**，1 个被维护者自己的修法取代，2 个仍在审。
 
-> **如实说明**：截至 2026 年 11 月，下列 PR 全部为 **open、等待维护者审阅** 状态——没有一个已合并。本仓库记录的是*过程与方法*，不是保证结果的神话。
+> **如实说明**：以下状态于 2026-11-28 照抄自 GitHub——8 个 PR 中 5 个已合并，1 个因维护者采用另一做法而关闭，2 个仍 open。部分测试在合并前由维护者重写（有一个原测试去掉修复后仍能通过）。本仓库记录的是*过程与方法*，不是保证结果的神话。
 
 ## 目录
 
@@ -36,18 +36,18 @@ flowchart LR
 
 | # | Bug（一句话） | PR | Issue | 状态 |
 |---|--------------|----|-------|------|
-| 1 | 一个损坏的凭据/项目文件让 source-control 导入整体失败 | [#43952](https://github.com/n8n-io/n8n/pull/43952) | [#43951](https://github.com/n8n-io/n8n/issues/43951) | Open |
-| 2 | Git 以不同 id 记录同 key 变量时，pull 会清空本地值 | [#44748](https://github.com/n8n-io/n8n/pull/44748) | [#44757](https://github.com/n8n-io/n8n/issues/44757) | Open |
-| 3 | 同一次 pull 中，另一文件移走的变量被当成孤儿直接删除 | [#44749](https://github.com/n8n-io/n8n/pull/44749) | [#44758](https://github.com/n8n-io/n8n/issues/44758) | Open |
-| 4 | #43952 之后 pull 与策略预览仍会因损坏凭据文件崩溃 | [#44750](https://github.com/n8n-io/n8n/pull/44750) | — | Open |
-| 5 | 导出按资源名上报文件条目，而磁盘文件按 id 命名 | [#44751](https://github.com/n8n-io/n8n/pull/44751) | [#44759](https://github.com/n8n-io/n8n/issues/44759) | Open |
+| 1 | 一个损坏的凭据/项目文件让 source-control 导入整体失败 | [#43952](https://github.com/n8n-io/n8n/pull/43952) | [#43951](https://github.com/n8n-io/n8n/issues/43951) | 已合并 2026-11-25 |
+| 2 | Git 以不同 id 记录同 key 变量时，pull 会清空本地值 | [#44748](https://github.com/n8n-io/n8n/pull/44748) | [#44757](https://github.com/n8n-io/n8n/issues/44757) | 已合并 2026-11-27 |
+| 3 | 同一次 pull 中，另一文件移走的变量被当成孤儿直接删除 | [#44749](https://github.com/n8n-io/n8n/pull/44749) | [#44758](https://github.com/n8n-io/n8n/issues/44758) | 已合并 2026-11-27 |
+| 4 | #43952 之后 pull 与策略预览仍会因损坏凭据文件崩溃 | [#44750](https://github.com/n8n-io/n8n/pull/44750) | — | 已合并 2026-11-27 |
+| 5 | 导出按资源名上报文件条目，而磁盘文件按 id 命名 | [#44751](https://github.com/n8n-io/n8n/pull/44751) | [#44759](https://github.com/n8n-io/n8n/issues/44759) | 已关闭——由 [#45508](https://github.com/n8n-io/n8n/pull/45508) 以另一做法取代 |
 | 6 | 把变量移入已有同 key 的范围会产生重复 key | [#44771](https://github.com/n8n-io/n8n/pull/44771) | [#44774](https://github.com/n8n-io/n8n/issues/44774) | Open |
 | 7 | 动态路径 webhook 的 Allowed Origins (CORS) 被忽略 | [#44772](https://github.com/n8n-io/n8n/pull/44772) | [#44775](https://github.com/n8n-io/n8n/issues/44775) | Open |
-| 8 | 列表带空格时第一个之后的 CORS 来源全部失效（已关闭的 #18528 从未真正修好） | [#44773](https://github.com/n8n-io/n8n/pull/44773) | [#44776](https://github.com/n8n-io/n8n/issues/44776) | Open |
+| 8 | 列表带空格时第一个之后的 CORS 来源全部失效（已关闭的 #18528 从未真正修好） | [#44773](https://github.com/n8n-io/n8n/pull/44773) | [#44776](https://github.com/n8n-io/n8n/issues/44776) | 已合并 2026-11-24 |
 
 Bug 1–5 来自对 `source-control.ee` 模块的只读审计；6–8 来自第二轮（variables、webhooks、CORS）。合计：3 个数据丢失/数据有效性 bug（#44748、#44749、#44771）、2 个安全相关的 CORS bug（#44772、#44773——后者为被误判已修复的 #18528 带复现重新提交）、2 个健壮性修复（损坏文件不再击穿整批处理；#43952、#44750）、1 个 API 一致性修复（#44751）。每个修复都附带在上游 master 上会失败的测试。
 
-**状态核实于 2026-11-22：** 8 个 PR 全部 open（无一合并；合并被阻止，等待维护者审阅），7 个 issue 全部 open——n8n 团队已完成分诊：第一轮 issue 已带 `status:in-linear` / `status:team-assigned` 标签。所有 PR 均带 `cla-signed` 标签。
+**状态核实于 2026-11-28：** 5 个 PR 已合并（#44773 于 2026-11-24，#43952 于 2026-11-25，#44749、#44748、#44750 于 2026-11-27）；#44751 未合并即关闭，维护者在 [#45508](https://github.com/n8n-io/n8n/pull/45508) 中直接移除了相关文件条目，并借此关闭 #44759；#44771 与 #44772 仍 open。7 个 issue 中 5 个已关闭（completed），#44774 与 #44775 仍 open。
 
 ## 仓库结构
 

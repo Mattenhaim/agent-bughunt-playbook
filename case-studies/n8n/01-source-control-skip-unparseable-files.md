@@ -1,6 +1,6 @@
 # Case 1 — One malformed file breaks source-control wholesale
 
-**PR:** [#43952](https://github.com/n8n-io/n8n/pull/43952) · **Issue:** [#43951](https://github.com/n8n-io/n8n/issues/43951) · **Module:** `source-control.ee` · **Status:** Open
+**PR:** [#43952](https://github.com/n8n-io/n8n/pull/43952) · **Issue:** [#43951](https://github.com/n8n-io/n8n/issues/43951) · **Module:** `source-control.ee` · **Status:** Merged 2026-11-25
 
 ## Problem
 

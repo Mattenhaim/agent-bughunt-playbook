@@ -22,7 +22,7 @@ Expect **zero** matches. The n8n hunt repo self-check pattern: report the comman
 ## Content rules
 
 - **Proven bugs only.** Anything without a submitted PR/issue stays out of public repos; "suspected" findings live in the private hunt report or nowhere.
-- **State as it is.** "Open — awaiting review", never "merged", never "accepted". Live-check every number you cite against GitHub before publishing.
+- **State as it is.** "Open — awaiting review" until GitHub shows it merged; never claim "merged" or "accepted" early. Live-check every number you cite against GitHub before publishing.
 - **Small snippets only.** Quoting a few lines of the target project to explain a root cause is fair use; copying whole functions into your repo is not. Describe the fix; link the PR for the diff.
 - **No personal emails** in docs or commits — use the account's noreply address.
 - **No local paths** (`E:\...`, `/Users/...`) — write "the local clone", "a scratch directory".

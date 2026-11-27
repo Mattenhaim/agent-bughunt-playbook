@@ -1,6 +1,6 @@
 # Case 2 — Variable pull blanks the local value on same-key adoption
 
-**PR:** [#44748](https://github.com/n8n-io/n8n/pull/44748) · **Issue:** [#44757](https://github.com/n8n-io/n8n/issues/44757) · **Module:** `source-control.ee` · **Status:** Open
+**PR:** [#44748](https://github.com/n8n-io/n8n/pull/44748) · **Issue:** [#44757](https://github.com/n8n-io/n8n/issues/44757) · **Module:** `source-control.ee` · **Status:** Merged 2026-11-27
 
 ## Problem
 

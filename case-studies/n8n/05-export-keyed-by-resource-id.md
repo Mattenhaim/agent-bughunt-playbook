@@ -1,6 +1,6 @@
 # Case 5 — Export reports file entries by name while files are keyed by id
 
-**PR:** [#44751](https://github.com/n8n-io/n8n/pull/44751) · **Issue:** [#44759](https://github.com/n8n-io/n8n/issues/44759) · **Module:** `source-control.ee` · **Status:** Open
+**PR:** [#44751](https://github.com/n8n-io/n8n/pull/44751) · **Issue:** [#44759](https://github.com/n8n-io/n8n/issues/44759) · **Module:** `source-control.ee` · **Status:** Closed — superseded by [#45508](https://github.com/n8n-io/n8n/pull/45508)
 
 ## Problem
 

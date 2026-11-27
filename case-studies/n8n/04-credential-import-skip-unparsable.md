@@ -1,6 +1,6 @@
 # Case 4 — Pull and policy preview still crash after the first malformed-file fix
 
-**PR:** [#44750](https://github.com/n8n-io/n8n/pull/44750) · **Module:** `source-control.ee` · **Status:** Open
+**PR:** [#44750](https://github.com/n8n-io/n8n/pull/44750) · **Module:** `source-control.ee` · **Status:** Merged 2026-11-27
 
 ## Problem
 

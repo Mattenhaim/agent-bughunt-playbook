@@ -1,6 +1,6 @@
 # Case 3 — Pull deletes a variable another file in the same pull moved
 
-**PR:** [#44749](https://github.com/n8n-io/n8n/pull/44749) · **Issue:** [#44758](https://github.com/n8n-io/n8n/issues/44758) · **Module:** `source-control.ee` · **Status:** Open
+**PR:** [#44749](https://github.com/n8n-io/n8n/pull/44749) · **Issue:** [#44758](https://github.com/n8n-io/n8n/issues/44758) · **Module:** `source-control.ee` · **Status:** Merged 2026-11-27
 
 ## Problem
 

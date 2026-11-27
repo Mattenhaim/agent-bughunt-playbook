@@ -1,6 +1,6 @@
 # Case 8 — CORS entries after the first break when the list contains spaces
 
-**PR:** [#44773](https://github.com/n8n-io/n8n/pull/44773) · **Issue:** [#44776](https://github.com/n8n-io/n8n/issues/44776) · **Module:** webhooks · **Status:** Open
+**PR:** [#44773](https://github.com/n8n-io/n8n/pull/44773) · **Issue:** [#44776](https://github.com/n8n-io/n8n/issues/44776) · **Module:** webhooks · **Status:** Merged 2026-11-24
 
 ## Problem
 

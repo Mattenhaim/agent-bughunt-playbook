@@ -1,8 +1,8 @@
 # Agent Bug-Hunt Playbook
 
-A field-tested playbook for running AI coding agents against large open-source codebases — finding real bugs, proving them with failing tests, shipping minimal fixes, and surviving the PR gauntlet (CLA, CI, AI reviewers). The worked example: **8 open pull requests and 7 filed issues against [n8n-io/n8n](https://github.com/n8n-io/n8n)**, produced in two hunt sessions.
+A field-tested playbook for running AI coding agents against large open-source codebases — finding real bugs, proving them with failing tests, shipping minimal fixes, and surviving the PR gauntlet (CLA, CI, AI reviewers). The worked example: **8 pull requests and 7 filed issues against [n8n-io/n8n](https://github.com/n8n-io/n8n)** from two hunt sessions — **5 merged by n8n maintainers**, 1 superseded by a maintainer's own fix, 2 still open.
 
-> **Honesty note:** every PR listed here is **open and awaiting review** as of November 2026 — none are merged. This repo documents the *process*, not guaranteed outcomes.
+> **Honesty note:** status below is copied from GitHub on 2026-11-28 — 5 of 8 PRs merged, 1 closed in favour of a maintainer's alternative, 2 open. Maintainers rewrote some of our tests before merging (one original test still passed without the fix). This repo documents the *process*, not guaranteed outcomes.
 
 ## Contents
 
@@ -36,18 +36,18 @@ All links go to the real PRs and issues. Status is live-checked against GitHub, 
 
 | # | Bug (one line) | PR | Issue | Status |
 |---|----------------|----|-------|--------|
-| 1 | Source-control import fails wholesale on one malformed credential/project file | [#43952](https://github.com/n8n-io/n8n/pull/43952) | [#43951](https://github.com/n8n-io/n8n/issues/43951) | Open |
-| 2 | Variable pull blanks the local value when Git tracks the same key under a different id | [#44748](https://github.com/n8n-io/n8n/pull/44748) | [#44757](https://github.com/n8n-io/n8n/issues/44757) | Open |
-| 3 | Source-control pull deletes a variable that another file in the same pull moved | [#44749](https://github.com/n8n-io/n8n/pull/44749) | [#44758](https://github.com/n8n-io/n8n/issues/44758) | Open |
-| 4 | Pull and policy preview still crash on malformed credential files after #43952 | [#44750](https://github.com/n8n-io/n8n/pull/44750) | — | Open |
-| 5 | Export reports file entries by resource name while files are keyed by id | [#44751](https://github.com/n8n-io/n8n/pull/44751) | [#44759](https://github.com/n8n-io/n8n/issues/44759) | Open |
+| 1 | Source-control import fails wholesale on one malformed credential/project file | [#43952](https://github.com/n8n-io/n8n/pull/43952) | [#43951](https://github.com/n8n-io/n8n/issues/43951) | Merged 2026-11-25 |
+| 2 | Variable pull blanks the local value when Git tracks the same key under a different id | [#44748](https://github.com/n8n-io/n8n/pull/44748) | [#44757](https://github.com/n8n-io/n8n/issues/44757) | Merged 2026-11-27 |
+| 3 | Source-control pull deletes a variable that another file in the same pull moved | [#44749](https://github.com/n8n-io/n8n/pull/44749) | [#44758](https://github.com/n8n-io/n8n/issues/44758) | Merged 2026-11-27 |
+| 4 | Pull and policy preview still crash on malformed credential files after #43952 | [#44750](https://github.com/n8n-io/n8n/pull/44750) | — | Merged 2026-11-27 |
+| 5 | Export reports file entries by resource name while files are keyed by id | [#44751](https://github.com/n8n-io/n8n/pull/44751) | [#44759](https://github.com/n8n-io/n8n/issues/44759) | Closed — superseded by [#45508](https://github.com/n8n-io/n8n/pull/45508) |
 | 6 | Moving a variable into a scope that already has the same key creates a duplicate | [#44771](https://github.com/n8n-io/n8n/pull/44771) | [#44774](https://github.com/n8n-io/n8n/issues/44774) | Open |
 | 7 | Allowed Origins (CORS) is ignored for webhooks with dynamic paths | [#44772](https://github.com/n8n-io/n8n/pull/44772) | [#44775](https://github.com/n8n-io/n8n/issues/44775) | Open |
-| 8 | CORS entries after the first break when the list contains spaces (closed issue #18528 was never actually fixed) | [#44773](https://github.com/n8n-io/n8n/pull/44773) | [#44776](https://github.com/n8n-io/n8n/issues/44776) | Open |
+| 8 | CORS entries after the first break when the list contains spaces (closed issue #18528 was never actually fixed) | [#44773](https://github.com/n8n-io/n8n/pull/44773) | [#44776](https://github.com/n8n-io/n8n/issues/44776) | Merged 2026-11-24 |
 
 Bugs 1–5 came from a read-only audit of the `source-control.ee` module; bugs 6–8 from a second session covering variables, webhooks, and CORS. Together: 3 data-loss/validity bugs (#44748, #44749, #44771), 2 security-adjacent CORS bugs (#44772, #44773 — the latter reviving stale-closed #18528 with a reproduction), 2 robustness fixes for malformed-file handling (#43952, #44750), and 1 API consistency fix (#44751). Every fix ships tests that fail on upstream master.
 
-**Status verified on 2026-11-22:** all 8 PRs are open (none merged; merge blocked pending maintainer review), all 7 issues are open, and the n8n team has triaged them — the round-1 issues already carry `status:in-linear` / `status:team-assigned` labels. Every PR carries the `cla-signed` label.
+**Status verified on 2026-11-28:** 5 PRs merged (#44773 on 2026-11-24, #43952 on 2026-11-25, #44749, #44748 and #44750 on 2026-11-27); #44751 was closed unmerged because maintainers removed the affected file entries in [#45508](https://github.com/n8n-io/n8n/pull/45508), which also closed #44759; #44771 and #44772 are open. 5 of the 7 issues are closed as completed; #44774 and #44775 are open.
 
 ## What's in this repo
 
